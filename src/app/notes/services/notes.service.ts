@@ -36,13 +36,7 @@ export class NotesService {
     ];
   }
 
-  findAll(search?: string): Observable<Note[]> {
-    const filteredNotes = search
-      ? this.notes.filter(
-          note => note.body.includes(search) || note.title.includes(search),
-        )
-      : this.notes;
-
-    return of(filteredNotes);
+  findAll(): Observable<Note[]> {
+    return of(this.notes);
   }
 }

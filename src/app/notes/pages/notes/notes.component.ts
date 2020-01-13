@@ -17,8 +17,11 @@ import { Note } from '../../interfaces/note';
 })
 export class NotesComponent implements OnInit {
   notes: Observable<Note[]>;
+  searchInput: string;
 
-  constructor(private notesService: NotesService) {}
+  constructor(private notesService: NotesService) {
+    this.searchInput = '';
+  }
 
   ngOnInit() {
     this.notes = this.notesService.findAll().pipe(delay(4000));
