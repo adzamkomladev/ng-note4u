@@ -39,4 +39,14 @@ export class NotesService {
   findAll(): Observable<Note[]> {
     return of(this.notes);
   }
+
+  findById(id: number): Observable<Note> {
+    return of(this.notes.find(note => note.id === id));
+  }
+
+  delete(id: number): Observable<void> {
+    this.notes = this.notes.filter(note => note.id !== id);
+
+    return of(null);
+  }
 }
