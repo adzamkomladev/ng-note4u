@@ -1,0 +1,11 @@
+<ng-container *ngIf="note; else newNoteTitle">
+  <h2>Edit note</h2>
+</ng-container>
+<ng-template #newNoteTitle>
+  <h2>New note</h2>
+</ng-template>
+
+<app-note-form
+  [note]="note || { title: '', body: '' }"
+  (submitForm)="onSubmitForm($event)"
+></app-note-form>

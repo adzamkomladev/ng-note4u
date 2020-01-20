@@ -5,7 +5,7 @@ import { delay } from 'rxjs/operators';
 
 import { listAnimation } from '../../animations/list-animation';
 
-import { NotesService } from '../../services/notes.service';
+import { NoteService } from '../../services/note.service';
 
 import { Note } from '../../interfaces/note';
 
@@ -19,11 +19,11 @@ export class NotesComponent implements OnInit {
   notes: Observable<Note[]>;
   searchInput: string;
 
-  constructor(private notesService: NotesService) {
+  constructor(private noteService: NoteService) {
     this.searchInput = '';
   }
 
   ngOnInit() {
-    this.notes = this.notesService.findAll().pipe(delay(4000));
+    this.notes = this.noteService.findAll().pipe(delay(4000));
   }
 }

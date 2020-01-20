@@ -1,8 +1,7 @@
-<h2>New note</h2>
 <form clrForm clrLayout="vertical">
   <clr-input-container>
     <label>Title</label>
-    <input clrInput type="text" [(ngModel)]="title" name="title" />
+    <input clrInput type="text" [(ngModel)]="note.title" name="title" />
   </clr-input-container>
   <div class="clr-form-control">
     <label for="body" class="clr-control-label">Body</label>
@@ -11,7 +10,7 @@
       name="body"
       [config]="{ height: '320px', editable: true }"
       [placeholder]="'Enter body here...'"
-      [(ngModel)]="body"
+      [(ngModel)]="note.body"
     ></angular-editor>
   </div>
 

@@ -7,7 +7,7 @@ import { Note } from '../interfaces/note';
 @Injectable({
   providedIn: 'root',
 })
-export class NotesService {
+export class NoteService {
   private notes: Note[];
 
   constructor() {
@@ -55,6 +55,21 @@ export class NotesService {
     this.notes.push(note);
 
     return of(note);
+  }
+
+  update(noteValue: Note): Observable<Note> {
+    const note: Note = { ...noteValue };
+    note.updatedAt = new Date();
+
+    const index = this.notes.findIndex(n => n.id === note.id);
+
+    if (index !== -1) {
+      this.notes[index] = note;
+
+      return of(this.notes[index]);
+    }
+
+    return of(null);
   }
 
   delete(id: number): Observable<void> {

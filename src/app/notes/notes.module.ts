@@ -13,7 +13,8 @@ import { FilterNotesPipe } from './pipes/filter-notes.pipe';
 
 import { NotesComponent } from './pages/notes/notes.component';
 import { NoteComponent } from './pages/note/note.component';
-import { NewNoteComponent } from './pages/new-note/new-note.component';
+import { EditNoteComponent } from './pages/edit-note/edit-note.component';
+import { NoteFormComponent } from './components/note-form/note-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NewNoteComponent } from './pages/new-note/new-note.component';
     DateAgoPipe,
     FilterNotesPipe,
     NoteComponent,
-    NewNoteComponent,
+    EditNoteComponent,
+    NoteFormComponent,
   ],
   imports: [
     CommonModule,

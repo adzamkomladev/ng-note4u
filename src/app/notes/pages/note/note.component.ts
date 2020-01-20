@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { concatMap, delay, take } from 'rxjs/operators';
 
-import { NotesService } from '../../services/notes.service';
+import { NoteService } from '../../services/note.service';
 
 import { Note } from '../../interfaces/note';
 
@@ -20,14 +20,14 @@ export class NoteComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private notesService: NotesService,
+    private noteService: NoteService,
   ) {
     this.opened = false;
   }
 
   ngOnInit() {
     this.note = this.route.paramMap.pipe(
-      concatMap(paramMap => this.notesService.findById(+paramMap.get('id'))),
+      concatMap(paramMap => this.noteService.findById(+paramMap.get('id'))),
       delay(1000),
     );
   }
@@ -38,7 +38,7 @@ export class NoteComponent implements OnInit {
 
   onDelete(): void {
     this.note
-      .pipe(concatMap(note => this.notesService.delete(note.id)))
+      .pipe(concatMap(note => this.noteService.delete(note.id)))
       .pipe(take(1))
       .toPromise()
       .then(_ => {

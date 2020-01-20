@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { NotesComponent } from './pages/notes/notes.component';
 import { NoteComponent } from './pages/note/note.component';
-import { NewNoteComponent } from './pages/new-note/new-note.component';
+import { EditNoteComponent } from './pages/edit-note/edit-note.component';
 
 const routes: Routes = [
   { path: '', component: NotesComponent },
-  { path: 'new-note', component: NewNoteComponent },
+  { path: 'edit-note', component: EditNoteComponent },
   { path: ':id', component: NoteComponent },
 ];
 
