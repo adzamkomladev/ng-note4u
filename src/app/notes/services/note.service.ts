@@ -72,6 +72,18 @@ export class NoteService {
     return of(null);
   }
 
+  favour(id: number): Observable<Note> {
+    const index = this.notes.findIndex(note => note.id === id);
+
+    if (index !== -1) {
+      this.notes[index].favourite = !this.notes[index].favourite;
+
+      return of(this.notes[index]);
+    }
+
+    return of(null);
+  }
+
   delete(id: number): Observable<void> {
     this.notes = this.notes.filter(note => note.id !== id);
 

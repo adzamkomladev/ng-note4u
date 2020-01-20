@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { concatMap, delay, take } from 'rxjs/operators';
+import { concatMap, delay, take, tap } from 'rxjs/operators';
 
 import { NoteService } from '../../services/note.service';
 
@@ -38,17 +38,29 @@ export class NoteComponent implements OnInit {
 
   onDelete(): void {
     this.note
-      .pipe(concatMap(note => this.noteService.delete(note.id)))
-      .pipe(take(1))
-      .toPromise()
-      .then(_ => {
-        this.opened = false;
+      .pipe(
+        concatMap(note => this.noteService.delete(note.id)),
+        take(1),
+        tap(_ => {
+          this.opened = false;
 
-        this.router.navigate(['/notes']);
-      });
+          this.router.navigate(['/notes']);
+        }),
+      )
+      .subscribe();
   }
 
   onCancel(): void {
     this.opened = false;
+  }
+
+  onFavour(): void {
+    this.note
+      .pipe(
+        concatMap(note => this.noteService.favour(note.id)),
+        take(1),
+        tap(_ => this.router.navigate(['/notes'])),
+      )
+      .subscribe();
   }
 }

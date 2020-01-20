@@ -2,7 +2,12 @@
 <ng-container *ngIf="note | async as n; else loadingTemplate">
   <div class="card">
     <div class="card-header">
-        {{ n.title }}
+      <clr-icon
+        shape="star"
+        class="is-solid is-warning"
+        *ngIf="n?.favourite"
+      ></clr-icon>
+      {{ n.title }}
     </div>
     <div class="card-block">
       <div class="card-media-block">
@@ -28,6 +33,9 @@
       </button>
       <button (click)="onConfirmDelete()" class="btn btn-sm btn-link">
         Delete
+      </button>
+      <button (click)="onFavour()" class="btn btn-sm btn-link">
+        {{ n?.favourite ? 'Un-favourite' : 'Favourite' }}
       </button>
     </div>
   </div>
