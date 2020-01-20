@@ -1,0 +1,65 @@
+<div class="waveWrapper waveAnimation">
+  <div class="waveWrapperInner bgTop">
+    <div
+      class="wave waveTop"
+      style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"
+    ></div>
+  </div>
+  <div class="waveWrapperInner bgMiddle">
+    <div
+      class="wave waveMiddle"
+      style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"
+    ></div>
+  </div>
+  <div class="waveWrapperInner bgBottom">
+    <div
+      class="wave waveBottom"
+      style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"
+    ></div>
+  </div>
+</div>
+
+<div class="content-container">
+  <div class="clr-row">
+    <div class="card">
+      <div class="card-header">
+        Welcome to Note4U
+      </div>
+      <div class="card-block">
+        <div class="card-title">
+          Sign in
+        </div>
+        <div class="card-text">
+          <form class="login-group">
+            <clr-input-container>
+              <input
+                type="email"
+                name="email"
+                clrInput
+                placeholder="Email address"
+                [(ngModel)]="form.email"
+              />
+            </clr-input-container>
+            <clr-password-container>
+              <input
+                type="password"
+                name="password"
+                clrPassword
+                placeholder="Password"
+                [(ngModel)]="form.password"
+              />
+            </clr-password-container>
+            <div *ngIf="false" class="error active">
+              Invalid email address or password
+            </div>
+            <button type="submit" class="btn btn-primary">SIGN IN</button>
+            <br />
+            <a href="javascript://" class="signup"
+              >Don't have an account? Sign up here.</a
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
