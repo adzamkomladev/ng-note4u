@@ -33,9 +33,7 @@
           </span>
         </div>
       </div>
-      <div class="card-text">
-        {{ note.body }}
-      </div>
+      <div [innerHTML]="note.body" class="card-text"></div>
     </div>
     <div class="card-footer">
       <button [routerLink]="['/notes', note?.id]" class="btn btn-sm btn-link">
