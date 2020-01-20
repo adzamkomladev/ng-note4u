@@ -43,7 +43,11 @@
               </a>
             </li>
             <li>
-              <a class="nav-link">
+              <a
+                [routerLink]="['/notes', 'new-note']"
+                routerLinkActive="active"
+                class="nav-link"
+              >
                 <clr-icon shape="note"></clr-icon>
                 New note
               </a>

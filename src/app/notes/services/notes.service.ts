@@ -44,6 +44,19 @@ export class NotesService {
     return of(this.notes.find(note => note.id === id));
   }
 
+  create(noteValue: { title: string; body: string }): Observable<Note> {
+    const note: Note = {
+      id: this.notes.length + 1,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      ...noteValue,
+    };
+
+    this.notes.push(note);
+
+    return of(note);
+  }
+
   delete(id: number): Observable<void> {
     this.notes = this.notes.filter(note => note.id !== id);
 
